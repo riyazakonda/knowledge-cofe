@@ -1,16 +1,35 @@
+import { useState } from "react";
 import "./App.css";
 import Blogs from "./components/Blogs";
 import Bookmarks from "./components/Bookmarks";
 import Header from "./components/Header";
 
 function App() {
+  const [bookmarks, setBookmarks] = useState([]);
+  const [readingTime, setReadingTime] = useState(0);
+
+  const heandleBookMark = (blog) => {
+    const newBookmarks = [...bookmarks, blog];
+    setBookmarks(newBookmarks);
+  };
+  const heandleBookmark = (time) => {
+    const newReadingTime = readingTime + time;
+    setReadingTime(newReadingTime);
+  };
+
   return (
     <>
       <div className="max-w-7xl mx-auto py-5 px-6">
         <Header></Header>
         <div className="md:flex">
-          <Blogs></Blogs>
-          <Bookmarks></Bookmarks>
+          <Blogs
+            heandleBookMark={heandleBookMark}
+            heandleBookmark={heandleBookmark}
+          ></Blogs>
+          <Bookmarks
+            bookmarks={bookmarks}
+            readingTime={readingTime}
+          ></Bookmarks>
         </div>
       </div>
     </>
