@@ -4,6 +4,7 @@ import { CiBookmark } from "react-icons/ci";
 
 const Blog = ({ blog, heandleBookMark, heandleBookmark }) => {
   const {
+    id,
     title,
     cover,
     author_img,
@@ -49,7 +50,7 @@ const Blog = ({ blog, heandleBookMark, heandleBookmark }) => {
         </p>
 
         <button
-          onClick={() => heandleBookmark(reading_time)}
+          onClick={() => heandleBookmark(reading_time, id)}
           className="text-purple-600 underline m-2
          "
         >
